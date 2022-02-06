@@ -1,32 +1,26 @@
 package com.employeepart2;
 
+import java.util.Random;
+
 public class EmployeeWageBuilderMethod 
 {
-	public static final int Present = 1;
-
-	public static void Attendance() 
+	public static void main(String[] args) 
+{
+	int empHrs = 0;
+	int wagephr =20;
+	Random random = new Random();
+	int randomNum = random.nextInt(2);
+	
+	if (randomNum == 1)
 	{
-		//local variables
-		int wrkHrs;
-		int empCheck = (int)(Math.random()*10)%2;
-
-		//computation to check Attendance
-		if(empCheck == Present) 
-		{
-			wrkHrs = 8;
-			System.out.println("Employee is Present");
-			System.out.println("Working Hours = "+wrkHrs);
-		}
-		else 
-		{
-			wrkHrs = 0;
-			System.out.println("Employee is Absent"+wrkHrs);
-			System.out.println("Working Hours = "+wrkHrs);
-		}
+		System.out.println("Employee is Present");
+		empHrs = 8;
 	}
-
-	public static void main(String[] args) {
-		Attendance();
+	else
+		System.out.println("Employee is Absent");
+	
+	double salary = empHrs * wagephr ;
+	System.out.println("Employee Wage is : " +salary);
 	}
 
 }
