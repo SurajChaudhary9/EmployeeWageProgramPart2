@@ -1,2 +1,2 @@
 # EmployeeWageProgramPart2
-Employee Wage Builder Using Methods
+## Welcome to master Branch
