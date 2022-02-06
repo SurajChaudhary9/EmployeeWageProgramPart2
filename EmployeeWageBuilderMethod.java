@@ -1,33 +1,57 @@
 package com.employeepart2;
-
 public class EmployeeWageBuilderMethod
 {
-	public static final int IS_FULL_TIME = 1;
-	public static final int IS_PART_TIME = 2;
-	public static final int IS_ABSENT = 0;
-	public static final int WAGE_PER_HOUR = 20;
+	//static & final variable
+	public static final int PER_HOUR_WAGE = 20;
+	public static final int DAYS_IN_MONTH = 20;
+	
+	public void employeeWageForMonth() {
+		//local variable 
+		int workingHour=0, totalSalary=0, totalWorkingHrs=0,isChecking;
 
-	public static void main(String[] args) {
-		int wrkHrs = 0;
-		int empCheck=(int)(Math.random()*10)%3;
+		//computation for employee wage for month & total salary
+		for (int day=1; day<=DAYS_IN_MONTH; day++)
+		{
+			System.out.print("Day : "+day);
+			isChecking=(int)(Math.random()*3);
 
-		switch(empCheck) {
-		case IS_FULL_TIME : wrkHrs=16;
-		System.out.println("Employee is Present Full Time and working hours is = "+wrkHrs);
-		break;
-		
-		case IS_PART_TIME : wrkHrs=8;
-		System.out.println("Employee is Part Time and working hours is = "+wrkHrs);
-		break;
 
-		case IS_ABSENT : wrkHrs=0;
-		System.out.println("Employee is Absent and working hours = "+wrkHrs);
-		break;
+			switch(isChecking){
+			case 0:
+				System.out.println(" Employee is absent");
+				workingHour=0;
+				break;
 
-		default:System.out.println("Invalid Input");
+			case 1:
+				System.out.println(" Employee is present");
+				workingHour=8;
+				break;
+
+			default :
+				System.out.println(" Employee is working as part time");
+				workingHour=4;
+
+			}
+			if(totalWorkingHrs == 100 && isChecking == 0) {
+				continue;
+			}
+			else if(isChecking > 0 && totalWorkingHrs == 100) {
+				break;
+			}
+			else {
+
+				totalWorkingHrs+=workingHour;
+				int salary=(PER_HOUR_WAGE * workingHour);
+				totalSalary=(totalSalary + salary);
+			}
 		}
-		System.out.println("Employee's Daily Wage is = "+(wrkHrs*WAGE_PER_HOUR));
 
+		System.out.println("Employee has earned totalSalary in a month = " +totalSalary);
+		System.out.println("Total working hours = "+totalWorkingHrs);
 	}
 
+	public static void main(String[] args) {
+		EmployeeWageBuilderMethod obj1 = new EmployeeWageBuilderMethod();
+		obj1.employeeWageForMonth();
+	}
 }
